@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package grpc_chat;
+
+message Person {
+    string name = 1;
+    int32 id = 2;
+}
+
+message Message {
+    string text = 1;
+    Person from = 2;
+    Person to = 3;
+    string timestamp = 4;
+}
+
+message MessageList {
+    repeated Message messages = 1;
+}
+
+message Empty {}
+
+service MessageService {
+    rpc SendMessage (Message) returns (stream Empty);
+    rpc GetMessages (Person) returns (stream MessageList);
+    rpc GetMessage (Person) returns (stream Message);
+}
