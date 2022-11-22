@@ -19,6 +19,16 @@ const Person$json = const {
 
 /// Descriptor for `Person`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List personDescriptor = $convert.base64Decode('CgZQZXJzb24SEgoEbmFtZRgBIAEoCVIEbmFtZRIOCgJpZBgCIAEoBVICaWQ=');
+@$core.Deprecated('Use tokenDescriptor instead')
+const Token$json = const {
+  '1': 'Token',
+  '2': const [
+    const {'1': 'token', '3': 1, '4': 1, '5': 9, '10': 'token'},
+  ],
+};
+
+/// Descriptor for `Token`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List tokenDescriptor = $convert.base64Decode('CgVUb2tlbhIUCgV0b2tlbhgBIAEoCVIFdG9rZW4=');
 @$core.Deprecated('Use messageDescriptor instead')
 const Message$json = const {
   '1': 'Message',

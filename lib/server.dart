@@ -11,22 +11,16 @@ Future<void> runServer(List<String> arguments) async {
 class MessageService extends MessageServiceBase {
   @override
   Stream<Message> getMessage(grpc.ServiceCall call, Person request) {
-    return Stream.value(Message()
+    final message = Message()
+      ..timestamp = DateTime.now().toUtc().toIso8601String()
       ..text = 'Hello, ${request.name}!'
-      ..timestamp = DateTime.now().toUtc().toIso8601String());
+      ..to = request;
+    return Stream.value(message);
   }
 
   @override
   Stream<MessageList> getMessages(grpc.ServiceCall call, Person request) {
-    return Stream.value(MessageList()
-      ..messages.addAll([
-        Message()
-          ..text = 'Hello, ${request.name}!'
-          ..timestamp = DateTime.now().toUtc().toIso8601String(),
-        Message()
-          ..text = 'How are you?'
-          ..timestamp = DateTime.now().toUtc().toIso8601String(),
-      ]));
+    return Stream.value(MessageList());
   }
 
   @override

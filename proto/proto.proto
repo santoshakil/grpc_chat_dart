@@ -7,6 +7,10 @@ message Person {
     int32 id = 2;
 }
 
+message Token {
+    string token = 1;
+}
+
 message Message {
     string text = 1;
     Person from = 2;
@@ -21,7 +25,12 @@ message MessageList {
 message Empty {}
 
 service MessageService {
-    rpc SendMessage (Message) returns (stream Empty);
     rpc GetMessages (Person) returns (stream MessageList);
     rpc GetMessage (Person) returns (stream Message);
+    rpc SendMessage (Message) returns (stream Empty);
+}
+
+service AuthService {
+    rpc Register (Person) returns (Token);
+    rpc Login (Person) returns (Token);
 }

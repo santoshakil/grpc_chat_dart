@@ -18,7 +18,7 @@ Future<void> runClient(List<String> arguments) async {
     ..timestamp = DateTime.now().toUtc().toIso8601String();
   final messageStream = client.getMessage(person);
   final messagesStream = client.getMessages(person);
-  final sendMessageStream = client.sendMessage(message);
+  client.sendMessage(message);
   print('Message: ${await messageStream.first}');
   print('Messages: ${await messagesStream.first}');
 }
